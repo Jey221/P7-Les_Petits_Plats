@@ -2,7 +2,6 @@ import recipes from './recipes.js'
 import displayCardRecipes from './card.js'
 import search from './functions.js'
 
-
 /* fonction de filtrage selon entrés dans la */
 let data = {
     recipes : [...recipes],

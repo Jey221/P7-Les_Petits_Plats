@@ -30,10 +30,12 @@ function cardFactory(recipes) {
     const ingredientsRecipe = document.createElement('div');
     ingredientsRecipe.setAttribute('class', 'card_ingredients')
     textRecipe.appendChild(ingredientsRecipe);
-    const listIngredients = document.createElement('ul');
-    listIngredients.setAttribute('class', 'listIngredients');
-    ingredientsRecipe.appendChild(listIngredients);
-    // console.log(recipes.ingredients);
+    recipes.ingredients.map(element => {
+        var p = document.createElement('p');
+        p.className = 'mb-0';
+        p.innerHTML = `<span class="font-weight-bold">${element.ingredient}</span><span>${element.quantity==undefined ? '1': element.quantity }</span><span>${element.unit == 'grammes' ?'g' : element.unit== 'cl'? element.unit:  element.unit== 'ml'? element.unit:  element.unit == 'cuillère à soupe'? ' Càs': element.unit == 'cuillères à soupe'? ' Càs': '' }</span>`;
+        ingredientsRecipe.appendChild(p);
+    });
 
     // création des descriptions de recette
     const descriptionsRecipe = document.createElement('div');
