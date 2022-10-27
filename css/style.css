@@ -2,3 +2,24 @@
 #logoLesPetitsPlats {
     width: 37%;
 }
+/* TAGLIST */
+.btnTaglist {
+    display: none;
+}
+
+/* CARTES RECETTE */
+.article {
+    width: 400px;
+    height: 364px;
+}
+.card_description {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 364px;
+}
+.card-bodyText {
+    font-size: 12px;
+}
+.time p {
+    margin-left: 6px;
+}

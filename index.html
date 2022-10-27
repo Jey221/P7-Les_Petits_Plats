@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les Petits Plats</title>
     <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/style.css">
     <script src="https://kit.fontawesome.com/9468c33ba3.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -16,47 +17,52 @@
                 <label class="visually-hidden" for="searchRecipesInput">Rechercher une recette</label>
                 <div class="input-group">
                   <input type="text" class="form-control" id="searchRecipesInput" placeholder="Rechercher une recette">
-                  <div class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></div>
+                  <button class="input-group-text" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
-              </div>
+            </div>
         </div>
         <div class="tag container row mt-3">
             <div class="tag_ingredients col-2">
-                <input class="btn btn-primary" type="button" value="Ingrédients"><i class="fa-solid fa-chevron-down"></i><i class="fa-solid fa-chevron-up"></i>
+                <div class="btn btn-primary" type="button" id="btnIngredients">Ingredients<i class="fa-solid fa-chevron-down"></i></div>
+                <div class="btnTaglist btn btn-primary" id="taglistIngredients">
+                    <header class="header_tag">
+                        <input type="text" class="form-control bg-transparent border-0" id="searchIngredient" placeholder="Rechercher un ingrédient">
+                        <div id="iconTagIngredient"><i class="fa-solid fa-chevron-up"></i></div>
+                    </header>
+                    <section class="taglist" id="listIngredient">
+                        <!-- injecté par JS -->
+                    </section>
+                </div>
             </div>
             <div class="tag_appareil col-2">
-                <input class="btn btn-success" type="button" value="Appareils"><i class="fa-solid fa-chevron-down"></i><i class="fa-solid fa-chevron-up"></i>
+                <div class="btn btn-success" type="button" id="btnAppareils">Appareils<i class="fa-solid fa-chevron-down"></i></div>
+                <div class="btnTaglist btn btn-success" id="taglistAppareils">
+                    <header class="header_tag">
+                        <input type="text" class="form-control bg-transparent border-0" id="searchAppareil" placeholder="Rechercher un appareil">
+                        <div id="iconTagAppareils"><i class="fa-solid fa-chevron-up"></i></div>
+                    </header>
+                    <section class="taglist" id="listAppareils">
+                        <!-- injecté par JS -->
+                    </section>
+                </div>
             </div>
             <div class="tag_ustensiles col-2">
-                <input class="btn btn-danger" type="button" value="Ustensiles"><i class="fa-solid fa-chevron-down"></i><i class="fa-solid fa-chevron-up"></i>
+                <div class="btn btn-danger" type="button" id="btnUstensiles">Ustensiles<i class="fa-solid fa-chevron-down"></i></div>
+                <div class="btnTaglist btn btn-danger" id="taglistUstensiles">
+                    <header class="header_tag">
+                        <input type="text" class="form-control bg-transparent border-0" id="searchUstensiles" placeholder="Rechercher un ustensile">
+                        <div id="iconTagUstensiles"><i class="fa-solid fa-chevron-up"></i></div>
+                    </header>
+                    <section class="taglist" id="listUstensiles">
+                        <!-- injecté par JS -->
+                    </section>
+                </div>
             </div>
         </div>
-        <div id="contentRecipes" class="cards container row row-cols-1 row-cols-md-3 g-4 mt-3"></div>
+        <div id="contentRecipes" class="cards container row row-cols-1 row-cols-md-3 g-4 mt-3">
+            <!-- injecter par JS -->
+        </div>
     </main>
     <script src="./script/script.js" type="module"></script>
 </body>
 </html>
-
-<!--     <input id="search" type="text">
-    <div class="content">
-    </div>
-    
-                <div class="col">
-                <div class="card h-100">
-                    <svg class="bd-placeholder-img card-img-top" width="100%" role="img"><rect width="100%" height="100%" fill="#868e96"></rect></svg>
-                    <div class="card-bodyTitle">
-                      <h5 class="card-title">titre recette</h5>
-                    </div>
-                    <div class="card-bodytext">
-                      <div class="card_ingredients">
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      </div>
-                      <div class="card_recette">
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      </div>
-                    </div>
-                </div>  
-            </div>
-
-
- -->

@@ -1,8 +1,10 @@
 import recipes from './recipes.js'
 import displayCardRecipes from './card.js'
 import search from './functions.js'
+import taglist from './taglist.js'
 
-/* fonction de filtrage selon entrés dans la */
+taglist(recipes);
+
 let data = {
     recipes : [...recipes],
     mainSearch : '',
@@ -18,11 +20,11 @@ const handler = {
                 break;
             case 'mainSearch':
             if(value.length > 2 && data.searchLength < value.length){
-                proxy.filtredRecipes = search(data.filtredRecipes, value)
+                proxy.filtredRecipes = search(data.filtredRecipes, value);
             }else if(value.length > 2 && data.searchLength > value.length){
-                proxy.filtredRecipes = search(data.recipes, value)
+                proxy.filtredRecipes = search(data.recipes, value);
             }else{
-                proxy.filtredRecipes = [...data.recipes]
+                proxy.filtredRecipes = [...data.recipes];
             }
             break
             default:
@@ -32,7 +34,7 @@ const handler = {
     }
 }
 
-let proxy = new Proxy(data, handler)
+let proxy = new Proxy(data, handler);
 
 proxy.filtredRecipes = [...recipes];
 

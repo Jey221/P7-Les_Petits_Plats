@@ -1,45 +1,56 @@
 function cardFactory(recipes) {
     const article = document.createElement('article');
-    article.setAttribute('class', 'col');
+    article.setAttribute('class', 'article col m-2');
 
-    //création des cartes de recette
+    //création des zones cartes de recette
     const card = document.createElement('div');
     card.setAttribute('class', 'card h-100');
     article.appendChild(card);
 
-    //création des images de recette
+    //création des zones images de recette
     const image = document.createElement('img');
     image.setAttribute('src', './assets/imgRecipes.svg');
     image.setAttribute('role', 'img');
     card.appendChild(image);
 
-    //création des titres de recette
+    //création des zones titres de recette
     const titleRecipe = document.createElement('div');
-    titleRecipe.setAttribute('class', 'card-bodyTitle');
+    titleRecipe.setAttribute('class', 'card-bodyTitle d-flex justify-content-between');
     card.appendChild(titleRecipe);
     const title = document.createElement('h5');
     titleRecipe.appendChild(title);
-    title.innerText = `${recipes.name}`
-    
-    //création des textes(ingrédients et description recette) de recette
+    title.innerText = `${recipes.name}`;
+
+    //création des zones temps de recette
+    const Timer = document.createElement('div');
+    Timer.setAttribute('class', 'time d-flex justify-content-between align-items-baseline fw-bold');
+    titleRecipe.appendChild(Timer);
+    const iconTime = document.createElement('i');
+    const Time = document.createElement('p');
+    iconTime.setAttribute('class', "fa-regular fa-clock");
+    Time.innerText = `${recipes.time}min`
+    Timer.appendChild(iconTime);
+    Timer.appendChild(Time);
+
+    //création des zones textes(ingrédients et description recette) de recette
     const textRecipe = document.createElement('div');
-    textRecipe.setAttribute('class', 'card-bodyText');
+    textRecipe.setAttribute('class', 'card-bodyText d-flex justify-content-between card-content py-0 my-3');
     card.appendChild(textRecipe);
 
-    // création des ingrédients de recette
+    // création des zones ingrédients de recette
     const ingredientsRecipe = document.createElement('div');
     ingredientsRecipe.setAttribute('class', 'card_ingredients')
     textRecipe.appendChild(ingredientsRecipe);
     recipes.ingredients.map(element => {
         var p = document.createElement('p');
         p.className = 'mb-0';
-        p.innerHTML = `<span class="font-weight-bold">${element.ingredient}</span><span>${element.quantity==undefined ? '1': element.quantity }</span><span>${element.unit == 'grammes' ?'g' : element.unit== 'cl'? element.unit:  element.unit== 'ml'? element.unit:  element.unit == 'cuillère à soupe'? ' Càs': element.unit == 'cuillères à soupe'? ' Càs': '' }</span>`;
+        p.innerHTML = `<span class="fw-bold">${element.ingredient}</span>: <span>${element.quantity==undefined ? '1': element.quantity }</span><span>${element.unit == 'grammes' ?'g' : element.unit== 'cl'? element.unit:  element.unit== 'ml'? element.unit:  element.unit == 'cuillère à soupe'? ' Càs': element.unit == 'cuillères à soupe'? ' Càs': '' }</span>`;
         ingredientsRecipe.appendChild(p);
     });
 
-    // création des descriptions de recette
+    // création des zones descriptions de recette
     const descriptionsRecipe = document.createElement('div');
-    descriptionsRecipe.setAttribute('class', 'card_description')
+    descriptionsRecipe.setAttribute('class', 'card_description w-50')
     textRecipe.appendChild(descriptionsRecipe);
     const recette = document.createElement('p');
     recette.setAttribute('class', 'recette');
