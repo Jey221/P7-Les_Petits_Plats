@@ -3,8 +3,13 @@
     width: 37%;
 }
 /* TAGLIST */
+.btn {
+    position: relative;
+}
 .btnTaglist {
     display: none;
+    position: absolute;
+    z-index: 10;
 }
 
 /* CARTES RECETTE */

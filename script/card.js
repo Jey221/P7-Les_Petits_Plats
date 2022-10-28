@@ -15,7 +15,7 @@ function cardFactory(recipes) {
 
     //création des zones titres de recette
     const titleRecipe = document.createElement('div');
-    titleRecipe.setAttribute('class', 'card-bodyTitle d-flex justify-content-between');
+    titleRecipe.setAttribute('class', 'card-bodyTitle d-flex justify-content-between px-2');
     card.appendChild(titleRecipe);
     const title = document.createElement('h5');
     titleRecipe.appendChild(title);
@@ -34,7 +34,7 @@ function cardFactory(recipes) {
 
     //création des zones textes(ingrédients et description recette) de recette
     const textRecipe = document.createElement('div');
-    textRecipe.setAttribute('class', 'card-bodyText d-flex justify-content-between card-content py-0 my-3');
+    textRecipe.setAttribute('class', 'card-bodyText d-flex justify-content-between card-content px-3 my-3');
     card.appendChild(textRecipe);
 
     // création des zones ingrédients de recette

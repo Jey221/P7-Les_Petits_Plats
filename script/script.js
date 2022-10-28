@@ -1,7 +1,7 @@
 import recipes from './recipes.js'
 import displayCardRecipes from './card.js'
 import search from './functions.js'
-import taglist from './taglist.js'
+import taglist, { displayTags } from './taglist.js'
 
 taglist(recipes);
 
@@ -17,9 +17,10 @@ const handler = {
         switch(prop) {
             case 'filtredRecipes':
                 displayCardRecipes(value);
+                displayTags(value)
                 break;
             case 'mainSearch':
-            if(value.length > 2 && data.searchLength < value.length){
+            if(value.length > 2 && data.searchLength <= value.length){
                 proxy.filtredRecipes = search(data.filtredRecipes, value);
             }else if(value.length > 2 && data.searchLength > value.length){
                 proxy.filtredRecipes = search(data.recipes, value);
