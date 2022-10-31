@@ -1,0 +1,25 @@
+{
+  "name": "q",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^8.26.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jey221/P7-Les_Petits_Plats.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jey221/P7-Les_Petits_Plats/issues"
+  },
+  "homepage": "https://github.com/Jey221/P7-Les_Petits_Plats#readme",
+  "description": ""
+}
