@@ -44,8 +44,9 @@ function cardFactory(recipes) {
   recipes.ingredients.map((element) => {
     const p = document.createElement('p');
     p.className = 'mb-0';
-    p.innerHTML = `<span class="fw-bold">${element.ingredient}</span>: <span>${element.quantity == undefined ? '1' : element.quantity}</span><span>${element.unit == 'grammes' ? 'g' : element.unit == 'cl' ? element.unit : element.unit == 'ml' ? element.unit : element.unit == 'cuillère à soupe' ? ' Càs' : element.unit == 'cuillères à soupe' ? ' Càs' : ''}</span>`;
+    p.innerHTML = `<span class="fw-bold">${element.ingredient}</span>: <span>${element.quantity === undefined ? '1' : element.quantity}</span><span>${element.unit === 'grammes' ? 'g' : element.unit === 'cl' ? element.unit : element.unit === 'ml' ? element.unit : element.unit === 'cuillère à soupe' ? ' Càs' : element.unit === 'cuillères à soupe' ? ' Càs' : ''}</span>`;
     ingredientsRecipe.appendChild(p);
+    return p;
   });
 
   // création des zones descriptions de recette
