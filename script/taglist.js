@@ -245,6 +245,7 @@ document.querySelector('#searchAppareil').addEventListener('keyup', (e) => {
 });
 
 // Filtre sur les tag ustensiles
+// !!!!MODIFIER L'OBJET USTENSILE POUR AVOIR UN ARRAY ET LE MANIP ICI!!!!
 /* const handlerUte = {
   set(obj, prop, value) {
     function searchUstensiles(array, searchString) {
