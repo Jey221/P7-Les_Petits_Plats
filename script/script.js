@@ -4,8 +4,6 @@ import displayCardRecipes from './card.js';
 import search from './functions.js';
 import displayTags from './taglist.js';
 
-// taglist(recipes);
-
 const data = {
   recipes: [...recipes],
   mainSearch: '',
