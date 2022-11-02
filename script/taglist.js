@@ -95,9 +95,10 @@ function displayIngredients(ingredients) {
   document.querySelector('#listIngredient').innerHTML = '';
   const zoneList = document.createElement('ul');
   zoneList.setAttribute('class', 'list-unstyled row');
+  zoneList.setAttribute('id', 'listItemIngredients');
   for (const element of ingredients) {
     const list = document.createElement('li');
-    list.setAttribute('class', 'col-4');
+    list.setAttribute('class', 'ingredientListItem col-4');
     zoneList.appendChild(list);
     list.innerText = element;
   }
@@ -121,9 +122,10 @@ function displayAppareils(appareils) {
   document.querySelector('#listAppareils').innerHTML = '';
   const zoneList = document.createElement('ul');
   zoneList.setAttribute('class', 'list-unstyled row');
+  zoneList.setAttribute('id', 'listItemAppareils');
   for (const element of appareils) {
     const list = document.createElement('li');
-    list.setAttribute('class', 'col-4');
+    list.setAttribute('class', 'appareilListItem col-4');
     zoneList.appendChild(list);
     list.innerText = element;
   }
@@ -138,8 +140,7 @@ function getUstensilesFrom(recipes) {
     const ustensiles = recipes[i].ustensils;
     allUstensiles.push(ustensiles);
   }
-
-  const ustensileNorepeat = new Set(allUstensiles);
+  const ustensileNorepeat = new Set(allUstensiles.flat());
   return ustensileNorepeat;
 }
 // affichage des ustensiles
@@ -147,9 +148,10 @@ function displayUstensiles(ustensiles) {
   document.querySelector('#listUstensiles').innerHTML = '';
   const zoneList = document.createElement('ul');
   zoneList.setAttribute('class', 'list-unstyled row');
+  zoneList.setAttribute('id', 'listItemUstensiles');
   for (const element of ustensiles) {
     const list = document.createElement('li');
-    list.setAttribute('class', 'col-4');
+    list.setAttribute('class', 'ustensileListItem col-4');
     zoneList.appendChild(list);
     list.innerText = element;
   }
@@ -175,7 +177,6 @@ const handlerIng = {
       return filter;
     }
     obj[prop] = value;
-    console.log(value);
     switch (prop) {
       case 'filtredIngredient':
         displayIngredients(value);
@@ -245,8 +246,7 @@ document.querySelector('#searchAppareil').addEventListener('keyup', (e) => {
 });
 
 // Filtre sur les tag ustensiles
-// !!!!MODIFIER L'OBJET USTENSILE POUR AVOIR UN ARRAY ET LE MANIP ICI!!!!
-/* const handlerUte = {
+const handlerUte = {
   set(obj, prop, value) {
     function searchUstensiles(array, searchString) {
       console.log(array);
@@ -283,7 +283,7 @@ document.querySelector('#searchUstensiles').addEventListener('keyup', (e) => {
   proxyUte.mainSearch = e.target.value;
   proxyUte.searchLength = e.target.value.length;
 });
- */
+
 // MISE EN PLACE DES LISTES INGREDIENTS/APPAREILS/USTENSILES
 export default function displayTags(recipes) {
   const ingredients = getIngredientsFrom(recipes);
@@ -294,3 +294,18 @@ export default function displayTags(recipes) {
   displayUstensiles(ustensiles);
   taglist();
 }
+
+// TAGS
+/* const listIngredients = document.querySelectorAll('.ingredientListItem');
+listIngredients.forEach(function lol {
+  listIngredients.addEventListener('click', (e) => {
+    console.log('cible', e);
+    console.log('hello');
+  });
+})
+
+ document.querySelector('#listItemIngredients').addEventListener('click', (e) => {
+  console.log('cible', e);
+  console.log('hello');
+});
+*/

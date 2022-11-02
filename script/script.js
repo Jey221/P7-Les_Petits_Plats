@@ -3,6 +3,7 @@ import recipes from './recipes.js';
 import displayCardRecipes from './card.js';
 import search from './functions.js';
 import displayTags from './taglist.js';
+import tags from './tags.js';
 
 const data = {
   recipes: [...recipes],
@@ -17,6 +18,7 @@ const handler = {
       case 'filtredRecipes':
         displayCardRecipes(value);
         displayTags(value);
+        tags(value);
         break;
       case 'mainSearch':
         if (value.length > 2 && data.searchLength <= value.length) {
