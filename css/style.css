@@ -2,6 +2,22 @@
 #logoLesPetitsPlats {
     width: 37%;
 }
+/* BARRE DE RECHERCHE (RECETTES) */
+.input-group {
+    height: 69px;
+}
+.input-group input, .input-group button {
+    background: #E7E7E7;
+    border: none;
+}
+.input-group button i {
+    font-size: 23px;
+}
+#searchRecipesInput:focus {
+    background: #E7E7E7;
+    box-shadow: none;
+}
+
 /* TAGS */
 .tags {
     gap: 1%;
@@ -10,8 +26,21 @@
     min-width: 90px;
 }
 /* TAGLIST */
+input {
+    color: white;
+}
+#searchIngredient::placeholder, #searchAppareil::placeholder, #searchUstensiles::placeholder{
+    color: white;
+}
 .btn {
     position: relative;
+}
+#btnIngredients, #btnAppareils, #btnUstensiles {
+    width: 170px;
+    height: 69px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 .btnTaglist {
     display: none;
@@ -30,13 +59,17 @@ font-size: 14px;
 }
 /* CARTES RECETTE */
 .article {
-    width: 400px;
-    height: 364px;
+    width: 405px;
+    height: 370px;
+}
+.article img {
+    height: 160px;
+}
+.article h5 {
+    font-size: 1.15rem;
 }
 .card_description {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    height: 364px;
+    max-height: 135px;
 }
 .card-bodyText {
     font-size: 12px;

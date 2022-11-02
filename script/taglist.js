@@ -7,7 +7,7 @@ function openIngredient() {
   document.querySelector('.tag_ingredients').classList.toggle('col-6');
 }
 function closeIngredient() {
-  document.querySelector('#btnIngredients').style.setProperty('display', 'block');
+  document.querySelector('#btnIngredients').style.setProperty('display', 'flex');
   document.querySelector('#taglistIngredients').style.setProperty('display', 'none');
   document.querySelector('.tag_ingredients').classList.remove('col-6');
 }
@@ -18,7 +18,7 @@ function openAppareil() {
   document.querySelector('.tag_appareil').classList.toggle('col-6');
 }
 function closeAppareil() {
-  document.querySelector('#btnAppareils').style.setProperty('display', 'block');
+  document.querySelector('#btnAppareils').style.setProperty('display', 'flex');
   document.querySelector('#taglistAppareils').style.setProperty('display', 'none');
   document.querySelector('.tag_appareil').classList.remove('col-6');
 }
@@ -29,7 +29,7 @@ function openUstensiles() {
   document.querySelector('.tag_ustensiles').classList.toggle('col-6');
 }
 function closeUstensiles() {
-  document.querySelector('#btnUstensiles').style.setProperty('display', 'block');
+  document.querySelector('#btnUstensiles').style.setProperty('display', 'flex');
   document.querySelector('#taglistUstensiles').style.setProperty('display', 'none');
   document.querySelector('.tag_ustensiles').classList.remove('col-6');
 }
@@ -98,7 +98,7 @@ function displayIngredients(ingredients) {
   zoneList.setAttribute('id', 'listItemIngredients');
   for (const element of ingredients) {
     const list = document.createElement('li');
-    list.setAttribute('class', 'ingredientListItem col-4');
+    list.setAttribute('class', 'ingredientListItem col-4 mb-1');
     zoneList.appendChild(list);
     list.innerText = element;
   }

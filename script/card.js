@@ -39,7 +39,7 @@ function cardFactory(recipes) {
 
   // création des zones ingrédients de recette
   const ingredientsRecipe = document.createElement('div');
-  ingredientsRecipe.setAttribute('class', 'card_ingredients');
+  ingredientsRecipe.setAttribute('class', 'card_ingredients col-6');
   textRecipe.appendChild(ingredientsRecipe);
   recipes.ingredients.map((element) => {
     const p = document.createElement('p');
@@ -51,7 +51,7 @@ function cardFactory(recipes) {
 
   // création des zones descriptions de recette
   const descriptionsRecipe = document.createElement('div');
-  descriptionsRecipe.setAttribute('class', 'card_description w-50');
+  descriptionsRecipe.setAttribute('class', 'card_description w-50 col-6 overflow-auto');
   textRecipe.appendChild(descriptionsRecipe);
   const recette = document.createElement('p');
   recette.setAttribute('class', 'recette');
