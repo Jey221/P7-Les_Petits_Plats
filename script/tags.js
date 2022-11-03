@@ -1,3 +1,5 @@
+import { searchByTags } from './functions.js';
+
 // CREATION DES TAGS APRES SELECTION DANS TAGLIST
 function buildTagDom(event) {
   const tag = document.createElement('button');
@@ -10,10 +12,10 @@ function buildTagDom(event) {
     tag.setAttribute('class', 'btn btn-danger d-flex justify-content-between');
   }
   tag.setAttribute('type', 'button');
-  tag.setAttribute('id', `tag_${event.target.innerHTML}`);
+  tag.setAttribute('id', `tag_${event.target.innerText}`);
   tag.innerHTML = `
   <div class="texteTag">
-    <p class="m-0">${event.target.innerHTML}</p>
+    <p class="m-0">${event.target.innerText}</p>
   </div>
   <div class="iconTag">
     <i class="fa-regular fa-circle-xmark"></i>
@@ -27,9 +29,14 @@ function buildTagDom(event) {
 }
 
 // ECOUTEUR SUR TAGLIST
-export default function tags() {
+export default function tags(data) {
+  const { filters } = data;
   document.querySelector('#listItemIngredients').addEventListener('click', (event) => {
     buildTagDom(event);
+    filters.ingredients.push(event.target.innerText);
+    const filtredRecipes = searchByTags(data.filtredRecipes, event.target.innerText, 'ingredients');
+    data.filters = { ...filters };
+    data.filtredRecipes = [...filtredRecipes];
   });
   document.querySelector('#listItemAppareils').addEventListener('click', (event) => {
     buildTagDom(event);

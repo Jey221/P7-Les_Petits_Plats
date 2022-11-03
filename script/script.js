@@ -9,6 +9,11 @@ const data = {
   recipes: [...recipes],
   mainSearch: '',
   searchLength: 0,
+  filters: {
+    ingredients: [],
+    appareils: [],
+    ustensiles: [],
+  },
 };
 
 const handler = {
@@ -18,7 +23,7 @@ const handler = {
       case 'filtredRecipes':
         displayCardRecipes(value);
         displayTags(value);
-        tags(value);
+        tags(proxy);
         break;
       case 'mainSearch':
         if (value.length > 2 && data.searchLength <= value.length) {

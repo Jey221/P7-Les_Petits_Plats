@@ -32,6 +32,9 @@ input {
 #searchIngredient::placeholder, #searchAppareil::placeholder, #searchUstensiles::placeholder{
     color: white;
 }
+#searchIngredient, #searchAppareil, #searchUstensiles{
+    color: white;
+}
 .btn {
     position: relative;
 }

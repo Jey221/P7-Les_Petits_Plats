@@ -98,7 +98,7 @@ function displayIngredients(ingredients) {
   zoneList.setAttribute('id', 'listItemIngredients');
   for (const element of ingredients) {
     const list = document.createElement('li');
-    list.setAttribute('class', 'ingredientListItem col-4 mb-1');
+    list.setAttribute('class', 'ingredientListItem col-4 pb-1');
     zoneList.appendChild(list);
     list.innerText = element;
   }
@@ -294,18 +294,3 @@ export default function displayTags(recipes) {
   displayUstensiles(ustensiles);
   taglist();
 }
-
-// TAGS
-/* const listIngredients = document.querySelectorAll('.ingredientListItem');
-listIngredients.forEach(function lol {
-  listIngredients.addEventListener('click', (e) => {
-    console.log('cible', e);
-    console.log('hello');
-  });
-})
-
- document.querySelector('#listItemIngredients').addEventListener('click', (e) => {
-  console.log('cible', e);
-  console.log('hello');
-});
-*/
