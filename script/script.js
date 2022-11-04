@@ -11,8 +11,8 @@ const data = {
   searchLength: 0,
   filters: {
     ingredients: [],
-    appareils: [],
-    ustensiles: [],
+    appliance: [],
+    ustensils: [],
   },
 };
 

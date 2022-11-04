@@ -40,8 +40,17 @@ export default function tags(data) {
   });
   document.querySelector('#listItemAppareils').addEventListener('click', (event) => {
     buildTagDom(event);
+    filters.appliance.push(event.target.innerText);
+    const filtredRecipes = searchByTags(data.filtredRecipes, event.target.innerText, 'appareils');
+    data.filters = { ...filters };
+    data.filtredRecipes = [...filtredRecipes];
   });
   document.querySelector('#listItemUstensiles').addEventListener('click', (event) => {
     buildTagDom(event);
+    filters.ustensils.push(event.target.innerText);
+    const filtredRecipes = searchByTags(data.filtredRecipes, event.target.innerText, 'ustensiles');
+    console.log(filtredRecipes);
+    data.filters = { ...filters };
+    data.filtredRecipes = [...filtredRecipes];
   });
 }
