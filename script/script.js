@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import recipes from './recipes.js';
 import displayCardRecipes from './card.js';
-import search from './functions.js';
+import { search } from './functions.js';
 import displayTags from './taglist.js';
 import tags from './tags.js';
 

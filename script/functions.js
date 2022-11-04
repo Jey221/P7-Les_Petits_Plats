@@ -1,7 +1,23 @@
-export default function search(array, searchString) {
-  const filter = array.filter((recipe) => recipe.name.toLowerCase().includes(searchString.toLowerCase()));
+export function search(recipes, searchString) {
+  const filter = recipes.filter((recipe) => {
+    const ingredients = recipe.ingredients.map((ing) => ing.ingredient.toLowerCase());
+    const appareils = recipe.appliance.toLowerCase();
+    const ustensiles = recipe.ustensils;
+    const descriptions = recipe.description;
+    if (ingredients.includes(searchString.toLowerCase())) {
+      return true;
+    } if (appareils.includes(searchString.toLowerCase())) {
+      return true;
+    } if (ustensiles.includes(searchString.toLowerCase())) {
+      return true;
+    } if (descriptions.includes(searchString.toLowerCase())) {
+      return true;
+    }
+    return false;
+  });
   return filter;
 }
+
 export function searchByTags(recipes, filter, type) {
   if (type === 'ingredients') {
     const newRecipes = recipes.filter((recipe) => {
@@ -11,10 +27,8 @@ export function searchByTags(recipes, filter, type) {
       }
       return false;
     });
-    console.log('newRecipes', newRecipes);
     return newRecipes;
   } if (type === 'appareils') {
-    console.log(recipes.appliance);
     const newRecipes = recipes.filter((recipe) => {
       const appareils = recipe.appliance.toLowerCase();
       if (appareils.includes(filter.toLowerCase())) {
