@@ -172,7 +172,6 @@ const data = {
 const handlerIng = {
   set(obj, prop, value) {
     function searchIngredient(array, searchString) {
-      console.log(array);
       const filter = array.filter((ingredients) => ingredients.toLowerCase().includes(searchString.toLowerCase()));
       return filter;
     }
@@ -210,7 +209,6 @@ document.querySelector('#searchIngredient').addEventListener('keyup', (e) => {
 const handlerApp = {
   set(obj, prop, value) {
     function searchAppareil(array, searchString) {
-      console.log(array);
       const filter = array.filter((appareils) => appareils.toLowerCase().includes(searchString.toLowerCase()));
       return filter;
     }
@@ -222,7 +220,6 @@ const handlerApp = {
       case 'mainSearch':
         if (value.length > 2 && data.searchLength <= value.length) {
           proxyApp.filtredAppareil = searchAppareil(data.filtredAppareil, value);
-          console.log(proxyApp.filtredAppareil);
         } else if (value.length > 2 && data.searchLength > value.length) {
           proxyApp.filtredAppareil = searchAppareil(data.appareils, value);
         } else {
@@ -249,7 +246,6 @@ document.querySelector('#searchAppareil').addEventListener('keyup', (e) => {
 const handlerUte = {
   set(obj, prop, value) {
     function searchUstensiles(array, searchString) {
-      console.log(array);
       const filter = array.filter((ustensiles) => ustensiles.toLowerCase().includes(searchString.toLowerCase()));
       return filter;
     }
@@ -261,7 +257,6 @@ const handlerUte = {
       case 'mainSearch':
         if (value.length > 2 && data.searchLength <= value.length) {
           proxyUte.filtredUstensile = searchUstensiles(data.filtredUstensile, value);
-          console.log(proxyUte.filtredUstensile);
         } else if (value.length > 2 && data.searchLength > value.length) {
           proxyUte.filtredUstensile = searchUstensiles(data.ustensiles, value);
         } else {

@@ -1,4 +1,5 @@
-import { searchByTags } from './functions.js';
+import { searchByTags, removeTags } from './functions.js';
+// import recipes from './recipes.js';
 
 // CREATION DES TAGS APRES SELECTION DANS TAGLIST
 function buildTagDom(event) {
@@ -21,11 +22,6 @@ function buildTagDom(event) {
     <i class="fa-regular fa-circle-xmark"></i>
   </div>`;
   document.querySelector('.tags').appendChild(tag);
-  // fermeture du tag
-  document.querySelector('.tags').addEventListener('click', (e) => {
-    e.preventDefault();
-    e.path[2].remove(e.path[2]);
-  });
 }
 
 // ECOUTEUR SUR TAGLIST
@@ -37,6 +33,13 @@ export default function tags(data) {
     const filtredRecipes = searchByTags(data.filtredRecipes, event.target.innerText, 'ingredients');
     data.filters = { ...filters };
     data.filtredRecipes = [...filtredRecipes];
+    const lol = event.target;
+    const list = document.querySelectorAll('.ingredientListItem');
+    console.log('filtredRecipes', filtredRecipes);
+    console.log('filters', filters);
+    console.log('lol', lol);
+    console.log('liste', list);
+    filters.removeAttribute('ingredients');
   });
   document.querySelector('#listItemAppareils').addEventListener('click', (event) => {
     buildTagDom(event);
@@ -49,8 +52,13 @@ export default function tags(data) {
     buildTagDom(event);
     filters.ustensils.push(event.target.innerText);
     const filtredRecipes = searchByTags(data.filtredRecipes, event.target.innerText, 'ustensiles');
-    console.log(filtredRecipes);
     data.filters = { ...filters };
     data.filtredRecipes = [...filtredRecipes];
+  });
+  // fermeture du tag
+  document.querySelector('.tags').addEventListener('click', (e) => {
+    e.preventDefault();
+    e.path[2].remove(e.path[2]);
+    removeTags();
   });
 }

@@ -44,7 +44,6 @@ const handler = {
 let proxy = new Proxy(data, handler);
 
 proxy.filtredRecipes = [...recipes];
-
 document.querySelector('#searchRecipesInput').addEventListener('keyup', (e) => {
   proxy.mainSearch = e.target.value;
   proxy.searchLength = e.target.value.length;
