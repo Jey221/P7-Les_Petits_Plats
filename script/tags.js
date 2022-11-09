@@ -1,8 +1,8 @@
-import { searchByTags, removeTags } from './functions.js';
+import { searchByTags } from './functions.js';
 // import recipes from './recipes.js';
 
 // CREATION DES TAGS APRES SELECTION DANS TAGLIST
-function buildTagDom(event) {
+function buildTagDom(event, data) {
   const tag = document.createElement('button');
   // mise en place d'une mise en forme selon la categorie
   if (event.target.classList.contains('ingredientListItem')) {
@@ -21,6 +21,23 @@ function buildTagDom(event) {
   <div class="iconTag">
     <i class="fa-regular fa-circle-xmark"></i>
   </div>`;
+  // fermeture du tag
+  tag.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log('close', event.target.tagName);
+    const button = event.target.tagName === 'BUTTON' ? event.target : event.target.closest('button');
+    const type = Array.from(button.classList).pop();
+    console.log(type);
+    const { filters } = data;
+    console.log(filters[type]);
+    const index = filters[type].findIndex((e) => e === button.querySelector('p').innerText);
+    console.log(index);
+    filters[type].splice(index, 1);
+    data.filters = { ...filters };
+    // const filtredRecipes = searchByTags(data.recipes, event.target.innerText, 'appareils');
+    // e.path[2].remove(e.path[2]);
+    // removeTags();
+  });
   document.querySelector('.tags').appendChild(tag);
 }
 
@@ -33,13 +50,6 @@ export default function tags(data) {
     const filtredRecipes = searchByTags(data.filtredRecipes, event.target.innerText, 'ingredients');
     data.filters = { ...filters };
     data.filtredRecipes = [...filtredRecipes];
-    const lol = event.target;
-    const list = document.querySelectorAll('.ingredientListItem');
-    console.log('filtredRecipes', filtredRecipes);
-    console.log('filters', filters);
-    console.log('lol', lol);
-    console.log('liste', list);
-    filters.removeAttribute('ingredients');
   });
   document.querySelector('#listItemAppareils').addEventListener('click', (event) => {
     buildTagDom(event);
@@ -54,11 +64,5 @@ export default function tags(data) {
     const filtredRecipes = searchByTags(data.filtredRecipes, event.target.innerText, 'ustensiles');
     data.filters = { ...filters };
     data.filtredRecipes = [...filtredRecipes];
-  });
-  // fermeture du tag
-  document.querySelector('.tags').addEventListener('click', (e) => {
-    e.preventDefault();
-    e.path[2].remove(e.path[2]);
-    removeTags();
   });
 }

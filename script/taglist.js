@@ -91,16 +91,18 @@ function getIngredientsFrom(recipes) {
   return ingredientNorepeat;
 }
 // affichage des ingrédients
-function displayIngredients(ingredients) {
+function displayIngredients(ingredients, filter) {
   document.querySelector('#listIngredient').innerHTML = '';
   const zoneList = document.createElement('ul');
   zoneList.setAttribute('class', 'list-unstyled row');
   zoneList.setAttribute('id', 'listItemIngredients');
   for (const element of ingredients) {
-    const list = document.createElement('li');
-    list.setAttribute('class', 'ingredientListItem col-4 pb-1');
-    zoneList.appendChild(list);
-    list.innerText = element;
+    if (!filter?.includes(element)) {
+      const list = document.createElement('li');
+      list.setAttribute('class', 'ingredientListItem col-4 pb-1');
+      zoneList.appendChild(list);
+      list.innerText = element;
+    }
   }
   document.querySelector('#listIngredient').appendChild(zoneList);
 }
@@ -118,16 +120,18 @@ function getAppareilsFrom(recipes) {
   return appareilNorepeat;
 }
 // affichage des appareils
-function displayAppareils(appareils) {
+function displayAppareils(appareils, filter) {
   document.querySelector('#listAppareils').innerHTML = '';
   const zoneList = document.createElement('ul');
   zoneList.setAttribute('class', 'list-unstyled row');
   zoneList.setAttribute('id', 'listItemAppareils');
   for (const element of appareils) {
-    const list = document.createElement('li');
-    list.setAttribute('class', 'appareilListItem col-4');
-    zoneList.appendChild(list);
-    list.innerText = element;
+    if (!filter?.includes(element)) {
+      const list = document.createElement('li');
+      list.setAttribute('class', 'appareilListItem col-4');
+      zoneList.appendChild(list);
+      list.innerText = element;
+    }
   }
   document.querySelector('#listAppareils').appendChild(zoneList);
 }
@@ -144,16 +148,18 @@ function getUstensilesFrom(recipes) {
   return ustensileNorepeat;
 }
 // affichage des ustensiles
-function displayUstensiles(ustensiles) {
+function displayUstensiles(ustensiles, filter) {
   document.querySelector('#listUstensiles').innerHTML = '';
   const zoneList = document.createElement('ul');
   zoneList.setAttribute('class', 'list-unstyled row');
   zoneList.setAttribute('id', 'listItemUstensiles');
   for (const element of ustensiles) {
-    const list = document.createElement('li');
-    list.setAttribute('class', 'ustensileListItem col-4');
-    zoneList.appendChild(list);
-    list.innerText = element;
+    if (!filter?.includes(element)) {
+      const list = document.createElement('li');
+      list.setAttribute('class', 'ustensileListItem col-4');
+      zoneList.appendChild(list);
+      list.innerText = element;
+    }
   }
   document.querySelector('#listUstensiles').appendChild(zoneList);
 }
@@ -280,12 +286,12 @@ document.querySelector('#searchUstensiles').addEventListener('keyup', (e) => {
 });
 
 // MISE EN PLACE DES LISTES INGREDIENTS/APPAREILS/USTENSILES
-export default function displayTags(recipes) {
+export default function displayTags(recipes, filter) {
   const ingredients = getIngredientsFrom(recipes);
-  displayIngredients(ingredients);
+  displayIngredients(ingredients, filter.ingredients);
   const appareils = getAppareilsFrom(recipes);
-  displayAppareils(appareils);
+  displayAppareils(appareils, filter.appliance);
   const ustensiles = getUstensilesFrom(recipes);
-  displayUstensiles(ustensiles);
+  displayUstensiles(ustensiles, filter.ustensils);
   taglist();
 }

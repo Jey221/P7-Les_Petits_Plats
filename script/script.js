@@ -22,7 +22,7 @@ const handler = {
     switch (prop) {
       case 'filtredRecipes':
         displayCardRecipes(value);
-        displayTags(value);
+        displayTags(value, data.filters);
         tags(proxy);
         break;
       case 'mainSearch':
