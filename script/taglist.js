@@ -128,7 +128,7 @@ function displayAppareils(appareils, filter) {
   for (const element of appareils) {
     if (!filter?.includes(element)) {
       const list = document.createElement('li');
-      list.setAttribute('class', 'appareilListItem col-4');
+      list.setAttribute('class', 'appareilListItem col-4 pb-1');
       zoneList.appendChild(list);
       list.innerText = element;
     }
@@ -156,7 +156,7 @@ function displayUstensiles(ustensiles, filter) {
   for (const element of ustensiles) {
     if (!filter?.includes(element)) {
       const list = document.createElement('li');
-      list.setAttribute('class', 'ustensileListItem col-4');
+      list.setAttribute('class', 'ustensileListItem col-4 pb-1');
       zoneList.appendChild(list);
       list.innerText = element;
     }

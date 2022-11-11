@@ -50,12 +50,6 @@ export function searchByTags(recipes, filter, type) {
   return recipes;
 }
 
-export function removeTags() {
-/*   const recipeRemove = recipes.filter((recipe) => {
-    console.log(recipes.ustensils);
-    console.log(recipe);
-    return recipe;
-  });
-  return recipeRemove;
- */
+/* export function removeTags(event) {
 }
+ */
