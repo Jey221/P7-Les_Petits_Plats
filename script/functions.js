@@ -22,11 +22,13 @@ export function searchByTags(recipes, filter, type) {
   if (type === 'ingredients') {
     const newRecipes = recipes.filter((recipe) => {
       const ingredients = recipe.ingredients.map((ing) => ing.ingredient.toLowerCase());
+      console.log(filter);
       if (ingredients.includes(filter.toLowerCase())) {
         return true;
       }
       return false;
     });
+    console.log('newRecipes', newRecipes);
     return newRecipes;
   } if (type === 'appareils') {
     const newRecipes = recipes.filter((recipe) => {
@@ -49,7 +51,3 @@ export function searchByTags(recipes, filter, type) {
   }
   return recipes;
 }
-
-/* export function removeTags(event) {
-}
- */
