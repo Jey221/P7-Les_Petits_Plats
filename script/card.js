@@ -61,6 +61,7 @@ function cardFactory(recipes) {
   return article;
 }
 
+// Affichage des cartes recettes
 export default function displayCardRecipes(recipes) {
   const content = document.querySelector('#contentRecipes');
   content.innerHTML = '';

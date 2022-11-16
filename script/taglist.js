@@ -1,6 +1,5 @@
-import recipes from './recipes.js';
-
 // OUVERTURE ET FERMETURE DES TAGLIST
+// INGREDIENT
 function openIngredient() {
   document.querySelector('#btnIngredients').style.setProperty('display', 'none');
   document.querySelector('#taglistIngredients').style.setProperty('display', 'block');
@@ -11,7 +10,7 @@ function closeIngredient() {
   document.querySelector('#taglistIngredients').style.setProperty('display', 'none');
   document.querySelector('.tag_ingredients').classList.remove('col-6');
 }
-
+// APPAREIL
 function openAppareil() {
   document.querySelector('#btnAppareils').style.setProperty('display', 'none');
   document.querySelector('#taglistAppareils').style.setProperty('display', 'block');
@@ -22,7 +21,7 @@ function closeAppareil() {
   document.querySelector('#taglistAppareils').style.setProperty('display', 'none');
   document.querySelector('.tag_appareil').classList.remove('col-6');
 }
-
+// USTENSILE
 function openUstensiles() {
   document.querySelector('#btnUstensiles').style.setProperty('display', 'none');
   document.querySelector('#taglistUstensiles').style.setProperty('display', 'block');
@@ -34,6 +33,7 @@ function closeUstensiles() {
   document.querySelector('.tag_ustensiles').classList.remove('col-6');
 }
 
+// Gestion des tags
 function taglist() {
   // OUVERTURE TAG INGREDIENT
   document.querySelector('#btnIngredients').addEventListener('click', (e) => {
@@ -47,7 +47,6 @@ function taglist() {
     e.preventDefault();
     closeIngredient();
   });
-
   // OUVERTURE TAG APPAREILS
   document.querySelector('#btnAppareils').addEventListener('click', (e) => {
     e.preventDefault();
@@ -60,7 +59,6 @@ function taglist() {
     e.preventDefault();
     closeAppareil();
   });
-
   // OUVERTURE TAG USTENSILES
   document.querySelector('#btnUstensiles').addEventListener('click', (e) => {
     e.preventDefault();
@@ -76,6 +74,8 @@ function taglist() {
 
   return taglist;
 }
+
+// Mise en place des listes dans les tags
 // INGREDIENTS
 // liste des ingrédients sans repétition
 function getIngredientsFrom(recipes) {
@@ -163,127 +163,6 @@ function displayUstensiles(ustensiles, filter) {
   }
   document.querySelector('#listUstensiles').appendChild(zoneList);
 }
-
-// FILTRE DE RECHERCHE SUR LES TAGLISTS
-// Récupération des datas
-const data = {
-  appareils: getAppareilsFrom(recipes),
-  ingredients: getIngredientsFrom(recipes),
-  ustensiles: getUstensilesFrom(recipes),
-  mainSearch: '',
-  searchLength: 0,
-};
-
-// Filtre sur les tags ingrédients
-const handlerIng = {
-  set(obj, prop, value) {
-    function searchIngredient(array, searchString) {
-      const filter = array.filter((ingredients) => ingredients.toLowerCase().includes(searchString.toLowerCase()));
-      return filter;
-    }
-    obj[prop] = value;
-    switch (prop) {
-      case 'filtredIngredient':
-        displayIngredients(value);
-        break;
-      case 'mainSearch':
-        if (value.length > 2 && data.searchLength <= value.length) {
-          proxyIng.filtredIngredient = searchIngredient(data.filtredIngredient, value);
-        } else if (value.length > 2 && data.searchLength > value.length) {
-          proxyIng.filtredIngredient = searchIngredient(data.ingredients, value);
-        } else {
-          proxyIng.filtredIngredient = [...data.ingredients];
-        }
-        break;
-      default:
-        break;
-    }
-    return true;
-  },
-};
-
-let proxyIng = new Proxy(data, handlerIng);
-
-proxyIng.filtredIngredient = getIngredientsFrom(recipes);
-//
-document.querySelector('#searchIngredient').addEventListener('keyup', (e) => {
-  proxyIng.mainSearch = e.target.value;
-  proxyIng.searchLength = e.target.value.length;
-});
-
-// Filtre sur les tag appareils
-const handlerApp = {
-  set(obj, prop, value) {
-    function searchAppareil(array, searchString) {
-      const filter = array.filter((appareils) => appareils.toLowerCase().includes(searchString.toLowerCase()));
-      return filter;
-    }
-    obj[prop] = value;
-    switch (prop) {
-      case 'filtredAppareil':
-        displayAppareils(value);
-        break;
-      case 'mainSearch':
-        if (value.length > 2 && data.searchLength <= value.length) {
-          proxyApp.filtredAppareil = searchAppareil(data.filtredAppareil, value);
-        } else if (value.length > 2 && data.searchLength > value.length) {
-          proxyApp.filtredAppareil = searchAppareil(data.appareils, value);
-        } else {
-          proxyApp.filtredAppareil = [...data.appareils];
-        }
-        break;
-      default:
-        break;
-    }
-    return true;
-  },
-};
-
-let proxyApp = new Proxy(data, handlerApp);
-
-proxyApp.filtredAppareil = getAppareilsFrom(recipes);
-
-document.querySelector('#searchAppareil').addEventListener('keyup', (e) => {
-  proxyApp.mainSearch = e.target.value;
-  proxyApp.searchLength = e.target.value.length;
-});
-
-// Filtre sur les tag ustensiles
-const handlerUte = {
-  set(obj, prop, value) {
-    function searchUstensiles(array, searchString) {
-      const filter = array.filter((ustensiles) => ustensiles.toLowerCase().includes(searchString.toLowerCase()));
-      return filter;
-    }
-    obj[prop] = value;
-    switch (prop) {
-      case 'filtredUstensile':
-        displayUstensiles(value);
-        break;
-      case 'mainSearch':
-        if (value.length > 2 && data.searchLength <= value.length) {
-          proxyUte.filtredUstensile = searchUstensiles(data.filtredUstensile, value);
-        } else if (value.length > 2 && data.searchLength > value.length) {
-          proxyUte.filtredUstensile = searchUstensiles(data.ustensiles, value);
-        } else {
-          proxyUte.filtredUstensile = [...data.ustensiles];
-        }
-        break;
-      default:
-        break;
-    }
-    return true;
-  },
-};
-
-let proxyUte = new Proxy(data, handlerUte);
-
-proxyUte.filtredUstensile = getUstensilesFrom(recipes);
-
-document.querySelector('#searchUstensiles').addEventListener('keyup', (e) => {
-  proxyUte.mainSearch = e.target.value;
-  proxyUte.searchLength = e.target.value.length;
-});
 
 // MISE EN PLACE DES LISTES INGREDIENTS/APPAREILS/USTENSILES
 export default function displayTags(recipes, filter) {

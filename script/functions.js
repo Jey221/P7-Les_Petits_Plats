@@ -1,3 +1,4 @@
+// Mise en place d'une fonction de recherche sur la barre principale
 export function search(recipes, searchString) {
   const filter = recipes.filter((recipe) => {
     const ingredients = recipe.ingredients.map((ing) => ing.ingredient.toLowerCase());
@@ -18,6 +19,7 @@ export function search(recipes, searchString) {
   return filter;
 }
 
+// Mise en place d'une fonction de recherche sur la barre des tags
 export function searchByTags(recipes, filter, type) {
   if (type === 'ingredients') {
     const newRecipes = recipes.filter((recipe) => {
@@ -28,7 +30,6 @@ export function searchByTags(recipes, filter, type) {
       }
       return false;
     });
-    console.log('newRecipes', newRecipes);
     return newRecipes;
   } if (type === 'appareils') {
     const newRecipes = recipes.filter((recipe) => {
