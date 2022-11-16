@@ -25,7 +25,7 @@ function buildTagDom(event, data) {
   // fermeture du tag
   tag.addEventListener('click', (event) => {
     event.preventDefault();
-    // event.path[2].remove(event.path[2]);
+    event.path[2].remove(event.path[2]);
     const button = event.target.tagName === 'BUTTON' ? event.target : event.target.closest('button');
     const type = Array.from(button.classList).pop();
     const { filters } = data;
@@ -38,26 +38,38 @@ function buildTagDom(event, data) {
       const ingFil = filters[type];
       const newR = recipes.filter((recipe) => {
         const ingredients = recipe.ingredients.map((ing) => ing.ingredient.toLowerCase());
-        console.log('filters[type]', ingFil.slice());
-        console.log('ingredients', ingredients);
-        console.log('booleans', ingredients.includes(ingFil));
-        if (ingredients.includes(ingFil)) {
+        if (ingFil.every((r) => ingredients.includes(r))) {
           console.log('yes ingredients');
           return true;
         }
         console.log('no ingredients');
         return false;
       });
+      data.filtredRecipes = [...newR];
+      console.log('newR', newR);
+      return newR;
+    } if (type === 'ustensils') {
+      const ustFil = filters[type];
+      const newR = recipes.filter((recipe) => {
+        const ustensiles = recipe.ustensils;
+        if (ustFil.every((r) => ustensiles.includes(r))) {
+          console.log('yes ustensils');
+          return true;
+        }
+        console.log('no ustensils');
+        return false;
+      });
+      data.filtredRecipes = [...newR];
       console.log('newR', newR);
       return newR;
     } if (type === 'appliance') {
       console.log('appliance');
-      const appFil = filters[type].toString();
+      const appFil = filters[type];
       const newR = recipes.filter((recipe) => {
         const appliances = recipe.appliance.toLowerCase();
         console.log('filters[type]', appFil);
         console.log('appliances', appliances);
-        if (appliances.includes(appFil.toString())) {
+        if (appFil.every((r) => appliances.includes(r))) {
           console.log('yes appareil');
           return true;
         }
@@ -65,30 +77,17 @@ function buildTagDom(event, data) {
         return false;
       });
       console.log('newR', newR);
-      return newR;
-    } if (type === 'ustensils') {
-      console.log('ustensils');
-      console.log('filters[type]', filters[type]);
-      const ustFil = filters[type].toString();
-      const newR = recipes.filter((recipe) => {
-        const ustensiles = recipe.ustensils;
-        if (ustensiles.includes(ustFil)) {
-          console.log('yes ustensils');
-          return true;
-        }
-        console.log('no ustensils');
-        return false;
-      });
-      console.log('newR', newR);
+      data.filtredRecipes = [...newR];
       return newR;
     }
-    data.filters = { ...filters };
+    /*     data.filters = { ...filters };
     console.log('data.filters', data.filters);
     console.log(newR);
-    data.filtredRecipes = [...recipes];
+    data.filtredRecipes = [...newR];
     console.log('data.filtredRecipes', data.filtredRecipes);
     // removeTags(event);
-    return tag;
+ */
+    return newR;
   });
   document.querySelector('.tags').appendChild(tag);
 }
@@ -119,3 +118,38 @@ export default function tags(data) {
     data.filtredRecipes = [...filtredRecipes];
   });
 }
+
+/* if (type === 'appliance') {
+      console.log('appliance');
+      const appFil = filters[type].toString();
+      const newR = recipes.filter((recipe) => {
+        const appliances = recipe.appliance.toLowerCase();
+        console.log('filters[type]', appFil);
+        console.log('appliances', appliances);
+        if (appFil.every((r) => appliances.includes(r))) {
+          console.log('yes appareil');
+          return true;
+        }
+        console.log('no appareil');
+        return false;
+      });
+      console.log('newR', newR);
+      return newR;
+    } */
+/* if (type === 'appliance') {
+      console.log('appliance');
+      const appFil = filters[type];
+      const newR = recipes.filter((recipe) => {
+        const appliances = recipe.appliance.toLowerCase();
+        console.log('filters[type]', appFil);
+        console.log('appliances', appliances);
+        if (appFil.every((r) => appliances.includes(r))) {
+          console.log('yes appareil');
+          return true;
+        }
+        console.log('no appareil');
+        return false;
+      });
+      console.log('newR', newR);
+      return newR;
+    } */
