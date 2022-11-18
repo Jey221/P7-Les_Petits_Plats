@@ -52,6 +52,7 @@ export function searchByTags(recipes, filter, type) {
   return recipes;
 }
 
+// Mise en place d'un message d'erreur si la rechche ne correspond à aucune recette
 export function noResult() {
   const error = document.createElement('div');
   error.setAttribute('id', 'errorMessage');
