@@ -1,6 +1,6 @@
 import recipes from './recipes.js';
 import displayCardRecipes from './card.js';
-import { search } from './functions.js';
+import { search, noResult } from './functions.js';
 import displayTags from './taglist.js';
 import tags from './tags.js';
 
@@ -28,10 +28,21 @@ const handler = {
         tags(proxy);
         break;
       case 'mainSearch':
+        console.log('value.length', value.length);
+        console.log('data.searchLength', data.searchLength);
+        console.log(search(data.filtredRecipes, value));
+        console.log(search(data.filtredRecipes, value).length === 0);
         if (value.length > 2 && data.searchLength <= value.length) {
           proxy.filtredRecipes = search(data.filtredRecipes, value);
+          if (search(data.filtredRecipes, value).length === 0) {
+            noResult();
+          }
         } else if (value.length > 2 && data.searchLength > value.length) {
           proxy.filtredRecipes = search(data.recipes, value);
+          console.log('ho');
+          if (search(data.filtredRecipes, value).length === 0) {
+            noResult();
+          }
         } else {
           proxy.filtredRecipes = [...data.recipes];
         }

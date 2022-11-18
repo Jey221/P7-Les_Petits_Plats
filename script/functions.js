@@ -24,7 +24,6 @@ export function searchByTags(recipes, filter, type) {
   if (type === 'ingredients') {
     const newRecipes = recipes.filter((recipe) => {
       const ingredients = recipe.ingredients.map((ing) => ing.ingredient.toLowerCase());
-      console.log(filter);
       if (ingredients.includes(filter.toLowerCase())) {
         return true;
       }
@@ -51,4 +50,14 @@ export function searchByTags(recipes, filter, type) {
     return newRecipes;
   }
   return recipes;
+}
+
+export function noResult() {
+  const error = document.createElement('div');
+  error.setAttribute('id', 'errorMessage');
+  error.setAttribute('class', 'w-100 mt-5');
+  error.innerHTML = `
+    <p class="text-center h1"> Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc </p>
+  `;
+  document.querySelector('#contentRecipes').appendChild(error);
 }
