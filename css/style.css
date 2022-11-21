@@ -83,7 +83,7 @@ font-size: 14px;
 /* CARTES RECETTE */
 .article {
     width: 405px;
-    height: 390px;
+    height: 398px;
 }
 .article img {
     height: 160px;
@@ -92,6 +92,10 @@ font-size: 14px;
 }
 .article h5 {
     font-size: 1.15rem;
+}
+.card {
+    background: #E7E7E7;
+    border: none;
 }
 .card_description {
     max-height: 135px;
