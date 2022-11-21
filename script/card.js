@@ -51,10 +51,10 @@ function cardFactory(recipes) {
 
   // création des zones descriptions de recette
   const descriptionsRecipe = document.createElement('div');
-  descriptionsRecipe.setAttribute('class', 'card_description w-50 col-6 overflow-auto');
+  descriptionsRecipe.setAttribute('class', 'card_description w-50 col-6');
   textRecipe.appendChild(descriptionsRecipe);
   const recette = document.createElement('p');
-  recette.setAttribute('class', 'recette');
+  recette.setAttribute('class', 'recette text-wrap');
   descriptionsRecipe.appendChild(recette);
   recette.innerText = `${recipes.description}`;
 

@@ -1,3 +1,7 @@
+/* POLICE */
+h5, p, .btn, li {
+    font-family: 'Lato', sans-serif;
+}
 /* HEADER */
 #logoLesPetitsPlats {
     width: 37%;
@@ -45,7 +49,7 @@ input {
     color: white;
 }
 #searchIngredient::placeholder, #searchAppareil::placeholder, #searchUstensiles::placeholder{
-    color: white;
+    color: rgba(255, 255, 255, 0.432);
 }
 #searchIngredient, #searchAppareil, #searchUstensiles{
     color: white;
@@ -73,15 +77,18 @@ input {
 font-size: 14px;
 }
 .taglist li {
+    margin-bottom: 1%;
     text-align: left;
 }
 /* CARTES RECETTE */
 .article {
     width: 405px;
-    height: 370px;
+    height: 390px;
 }
 .article img {
     height: 160px;
+    border-radius: 6px 6px 0px 0px;
+    margin-bottom: 6%;
 }
 .article h5 {
     font-size: 1.15rem;
@@ -89,9 +96,21 @@ font-size: 14px;
 .card_description {
     max-height: 135px;
 }
+.card_ingredients {
+    font-size: 13px;
+}
 .card-bodyText {
     font-size: 12px;
 }
 .time p {
     margin-left: 6px;
+}
+.recette {
+    font-size: 13px;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp:6;
+    -webkit-box-orient:vertical;
 }
