@@ -28,10 +28,6 @@ const handler = {
         tags(proxy);
         break;
       case 'mainSearch':
-        console.log('value.length', value.length);
-        console.log('data.searchLength', data.searchLength);
-        console.log(search(data.filtredRecipes, value));
-        console.log(search(data.filtredRecipes, value).length === 0);
         if (value.length > 2 && data.searchLength <= value.length) {
           proxy.filtredRecipes = search(data.filtredRecipes, value);
           if (search(data.filtredRecipes, value).length === 0) {
@@ -39,7 +35,6 @@ const handler = {
           }
         } else if (value.length > 2 && data.searchLength > value.length) {
           proxy.filtredRecipes = search(data.recipes, value);
-          console.log('ho');
           if (search(data.filtredRecipes, value).length === 0) {
             noResult();
           }

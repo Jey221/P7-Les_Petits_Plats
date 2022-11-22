@@ -22,6 +22,7 @@ function buildTagDom(event, data) {
       <i class="fa-regular fa-circle-xmark"></i>
     </div>`;
   // fermeture du tag
+  console.log(tag);
   tag.addEventListener('click', (event) => {
     event.preventDefault();
     event.path[2].remove(event.path[2]);

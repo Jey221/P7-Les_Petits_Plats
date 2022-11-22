@@ -1,6 +1,6 @@
 function cardFactory(recipes) {
   const article = document.createElement('article');
-  article.setAttribute('class', 'article col m-2');
+  article.setAttribute('class', 'article col');
 
   // création des zones cartes de recette
   const card = document.createElement('div');

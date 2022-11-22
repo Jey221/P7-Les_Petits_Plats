@@ -84,6 +84,8 @@ font-size: 14px;
 .article {
     width: 405px;
     height: 398px;
+    margin-right: 19px;
+    margin-bottom: 19px;
 }
 .article img {
     height: 160px;
