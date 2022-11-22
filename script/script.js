@@ -9,6 +9,8 @@ const data = {
   recipes: [...recipes],
   mainSearch: '',
   searchIngredients: '',
+  searchAppareils: '',
+  searchUstensiles: '',
   searchLength: 0,
   filters: {
     ingredients: [],
