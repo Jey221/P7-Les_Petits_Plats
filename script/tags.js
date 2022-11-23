@@ -1,3 +1,4 @@
+/* eslint-disable dot-notation */
 import { searchByTags } from './functions.js';
 import recipes from './recipes.js';
 
@@ -25,48 +26,14 @@ function buildTagDom(event, data) {
   console.log(tag);
   tag.addEventListener('click', (event) => {
     event.preventDefault();
-    event.path[2].remove(event.path[2]);
     const button = event.target.tagName === 'BUTTON' ? event.target : event.target.closest('button');
     const type = Array.from(button.classList).pop();
     const { filters } = data;
     const index = filters[type].findIndex((e) => e === button.querySelector('p').innerText);
     filters[type].splice(index, 1);
-    let newR;
-    if (type === 'ingredients') {
-      const ingFil = filters[type];
-      const newR = recipes.filter((recipe) => {
-        const ingredients = recipe.ingredients.map((ing) => ing.ingredient.toLowerCase());
-        if (ingFil.every((r) => ingredients.includes(r))) {
-          return true;
-        }
-        return false;
-      });
-      data.filtredRecipes = [...newR];
-      return newR;
-    } if (type === 'ustensils') {
-      const ustFil = filters[type];
-      const newR = recipes.filter((recipe) => {
-        const ustensiles = recipe.ustensils;
-        if (ustFil.every((r) => ustensiles.includes(r))) {
-          return true;
-        }
-        return false;
-      });
-      data.filtredRecipes = [...newR];
-      return newR;
-    } if (type === 'appliance') {
-      const appFil = filters[type];
-      const newR = recipes.filter((recipe) => {
-        const appliances = recipe.appliance.toLowerCase();
-        if (appFil.every((r) => appliances.includes(r))) {
-          return true;
-        }
-        return false;
-      });
-      data.filtredRecipes = [...newR];
-      return newR;
-    }
-    return newR;
+    button.remove();
+    data.filtredRecipes = [...filterRecipesByTags(recipes, filters)];
+    return filterRecipesByTags(recipes, filters);
   });
   document.querySelector('.tags').appendChild(tag);
 }
@@ -95,4 +62,34 @@ export default function tags(data) {
     data.filters = { ...filters };
     data.filtredRecipes = [...filtredRecipes];
   });
+}
+
+function filterRecipesByTags(recipes, filters) {
+  const ingFil = filters['ingredients'];
+  const ingredientsFiltred = recipes.filter((recipe) => {
+    const ingredients = recipe.ingredients.map((ing) => ing.ingredient.toLowerCase());
+    if (ingFil.every((r) => ingredients.includes(r))) {
+      return true;
+    }
+    return false;
+  });
+  console.log(recipes.length, ingredientsFiltred.length);
+  const appFil = filters['appliance'];
+  const applianceFiltred = ingredientsFiltred.filter((recipe) => {
+    const appliances = recipe.appliance.toLowerCase();
+    if (appFil.every((r) => appliances.includes(r))) {
+      return true;
+    }
+    return false;
+  });
+  const ustFil = filters['ustensils'];
+  const filtered = applianceFiltred.filter((recipe) => {
+    const ustensiles = recipe.ustensils;
+    if (ustFil.every((r) => ustensiles.includes(r))) {
+      return true;
+    }
+    return false;
+  });
+  console.log(recipes.length, ingredientsFiltred.length, applianceFiltred.length, filtered.length);
+  return filtered;
 }

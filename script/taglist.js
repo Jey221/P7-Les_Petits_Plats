@@ -3,7 +3,7 @@
 function openIngredient() {
   document.querySelector('#btnIngredients').style.setProperty('display', 'none');
   document.querySelector('#taglistIngredients').style.setProperty('display', 'block');
-  document.querySelector('.tag_ingredients').classList.toggle('col-6');
+  document.querySelector('.tag_ingredients').classList.add('col-6');
 }
 function closeIngredient() {
   document.querySelector('#btnIngredients').style.setProperty('display', 'flex');
@@ -14,7 +14,7 @@ function closeIngredient() {
 function openAppareil() {
   document.querySelector('#btnAppareils').style.setProperty('display', 'none');
   document.querySelector('#taglistAppareils').style.setProperty('display', 'block');
-  document.querySelector('.tag_appareil').classList.toggle('col-6');
+  document.querySelector('.tag_appareil').classList.add('col-6');
 }
 function closeAppareil() {
   document.querySelector('#btnAppareils').style.setProperty('display', 'flex');
@@ -25,7 +25,7 @@ function closeAppareil() {
 function openUstensiles() {
   document.querySelector('#btnUstensiles').style.setProperty('display', 'none');
   document.querySelector('#taglistUstensiles').style.setProperty('display', 'block');
-  document.querySelector('.tag_ustensiles').classList.toggle('col-6');
+  document.querySelector('.tag_ustensiles').classList.add('col-6');
 }
 function closeUstensiles() {
   document.querySelector('#btnUstensiles').style.setProperty('display', 'flex');
