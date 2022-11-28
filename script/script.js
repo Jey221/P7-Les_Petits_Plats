@@ -1,8 +1,7 @@
 import recipes from './recipes.js';
 import displayCardRecipes from './card.js';
 // import { noResult } from './functions.js';
-import { search2 } from './functions.js';
-
+import { filterElements } from './functions.js';
 import displayTags from './taglist.js';
 import tags from './tags.js';
 
@@ -27,24 +26,10 @@ const handler = {
     obj[prop] = value;
     switch (prop) {
       case 'filtredRecipes':
+        console.log('value', value);
         displayCardRecipes(value, proxy);
         displayTags(value, data.filters);
         tags(proxy);
-        break;
-      case 'mainSearch':
-        if (value.length > 2 && data.searchLength <= value.length) {
-          proxy.filtredRecipes = search2(data.filtredRecipes, value);
-          if (search2(data.filtredRecipes, value).length === 0) {
-            // noResult();
-          }
-        } else if (value.length > 2 && data.searchLength > value.length) {
-          proxy.filtredRecipes = search2(data.recipes, value);
-          if (search2(data.filtredRecipes, value).length === 0) {
-            // noResult();
-          }
-        } else {
-          proxy.filtredRecipes = [...data.recipes];
-        }
         break;
       case 'searchIngredients':
         showIngredients(value);
@@ -66,27 +51,11 @@ const handler = {
 let proxy = new Proxy(data, handler);
 proxy.filtredRecipes = [...recipes];
 
-/* document.querySelector('#searchRecipesInput').addEventListener('keyup', (e) => {
-  const content = e.target.value;
-  // const recipes = document.querySelectorAll('article');
-  console.log(content);
-  console.log(recipes);
-  recipes.forEach((recipe) => {
-    if (content.length > 2) {
-      if (recipe.name.toLowerCase().includes(content)) {
-        console.log('recipe Ok', recipe);
-        return recipe;
-      }
-    }
-    console.log('recipe No', recipe);
-    return recipe;
-  });
-});
- */
 // Ecouteurs sur barre de recherche des recettes
 document.querySelector('#searchRecipesInput').addEventListener('keyup', (e) => {
-  proxy.mainSearch = e.target.value;
-  proxy.searchLength = e.target.value.length;
+  const searchedValue = e.target.value;// variable qui est entrée ds la barre de recherche
+  const cards = document.querySelectorAll('.article');// récupération des articles
+  filterElements(searchedValue, cards);// fonction de recherche
 });
 
 // Ecouteurs sur barre de recherche des tags ingredients

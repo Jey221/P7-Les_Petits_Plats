@@ -1,42 +1,14 @@
-/* // Mise en place d'une fonction de recherche sur la barre principale
-export function search(recipes, searchString) {
-  const filter = recipes.filter((recipe) => {
-    const ingredients = recipe.ingredients.map((ing) => ing.ingredient.toLowerCase());
-    const appareils = recipe.appliance.toLowerCase();
-    const ustensiles = recipe.ustensils;
-    const descriptions = recipe.description;
-    if (ingredients.includes(searchString.toLowerCase())) {
-      return true;
-    } if (appareils.includes(searchString.toLowerCase())) {
-      return true;
-    } if (ustensiles.includes(searchString.toLowerCase())) {
-      return true;
-    } if (descriptions.includes(searchString.toLowerCase())) {
-      return true;
-    }
-    return false;
-  });
-  return filter;
-}
- */
-
-export function search2(recipes, e) {
-  console.log(e);
-  const content = e;
-  // const recipes = document.querySelectorAll('article');
-  console.log(content);
-  console.log(recipes);
-  const newRec = recipes.forEach((recipe) => {
-    if (content.length > 2) {
-      if (recipe.name.toLowerCase().includes(content)) {
-        console.log('recipe Ok', recipe);
-        return true;
+// Mise en place d'une fonction de recherche sur la barre principale
+export function filterElements(content, elements) {
+  if (content.length > 2) {
+    for (let i = 0; i < elements.length; i += 1) {
+      if (elements[i].textContent.toLowerCase().includes(content)) {
+        elements[i].style.display = 'block';
+      } else {
+        elements[i].style.display = 'none';
       }
-      console.log('recipe No', recipe);
-      return false;
     }
-    return newRec;
-  });
+  }
 }
 
 // Mise en place d'une fonction de recherche sur la barre des tags
@@ -82,3 +54,20 @@ export function noResult() {
   `;
   document.querySelector('#contentRecipes').appendChild(error);
 }
+
+/*
+export function search2(recipes, searchString) {
+  console.log(searchString);
+  // const recipes = document.querySelectorAll('article');
+  console.log(recipes);
+  const newRec = recipes.forEach((recipe) => {
+    if (recipe.name.toLowerCase().includes(searchString)) {
+      console.log('recipe Ok', recipe);
+      return true;
+    }
+    console.log('recipe No', recipe);
+    return false;
+  });
+  return newRec;
+}
+ */
