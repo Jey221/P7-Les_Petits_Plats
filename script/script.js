@@ -1,6 +1,8 @@
 import recipes from './recipes.js';
 import displayCardRecipes from './card.js';
-import { search, noResult } from './functions.js';
+// import { noResult } from './functions.js';
+import { search2 } from './functions.js';
+
 import displayTags from './taglist.js';
 import tags from './tags.js';
 
@@ -31,14 +33,14 @@ const handler = {
         break;
       case 'mainSearch':
         if (value.length > 2 && data.searchLength <= value.length) {
-          proxy.filtredRecipes = search(data.filtredRecipes, value);
-          if (search(data.filtredRecipes, value).length === 0) {
-            noResult();
+          proxy.filtredRecipes = search2(data.filtredRecipes, value);
+          if (search2(data.filtredRecipes, value).length === 0) {
+            // noResult();
           }
         } else if (value.length > 2 && data.searchLength > value.length) {
-          proxy.filtredRecipes = search(data.recipes, value);
-          if (search(data.filtredRecipes, value).length === 0) {
-            noResult();
+          proxy.filtredRecipes = search2(data.recipes, value);
+          if (search2(data.filtredRecipes, value).length === 0) {
+            // noResult();
           }
         } else {
           proxy.filtredRecipes = [...data.recipes];
@@ -64,6 +66,23 @@ const handler = {
 let proxy = new Proxy(data, handler);
 proxy.filtredRecipes = [...recipes];
 
+/* document.querySelector('#searchRecipesInput').addEventListener('keyup', (e) => {
+  const content = e.target.value;
+  // const recipes = document.querySelectorAll('article');
+  console.log(content);
+  console.log(recipes);
+  recipes.forEach((recipe) => {
+    if (content.length > 2) {
+      if (recipe.name.toLowerCase().includes(content)) {
+        console.log('recipe Ok', recipe);
+        return recipe;
+      }
+    }
+    console.log('recipe No', recipe);
+    return recipe;
+  });
+});
+ */
 // Ecouteurs sur barre de recherche des recettes
 document.querySelector('#searchRecipesInput').addEventListener('keyup', (e) => {
   proxy.mainSearch = e.target.value;
