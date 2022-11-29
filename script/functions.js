@@ -8,6 +8,10 @@ export function filterElements(content, elements) {
         elements[i].style.display = 'none';
       }
     }
+  } else {
+    for (let i = 0; i < elements.length; i += 1) {
+      elements[i].style.display = 'block';
+    }
   }
 }
 
@@ -55,7 +59,7 @@ export function noResult() {
   document.querySelector('#contentRecipes').appendChild(error);
 }
 
-/*
+/* TEST BARRE DE RECHERCHE
 export function search2(recipes, searchString) {
   console.log(searchString);
   // const recipes = document.querySelectorAll('article');
