@@ -3,7 +3,7 @@ export function filterElements(content, elements) {
   if (content.length > 2) {
     let display = 0;
     for (let i = 0; i < elements.length; i += 1) {
-      if (elements[i].textContent.toLowerCase().includes(content)) {
+      if (elements[i].textContent.toLowerCase().includes(content.toLowerCase())) {
         elements[i].style.display = 'block';
         display += 1;
       } else {
@@ -54,6 +54,7 @@ export function searchByTags(recipes, filter, type) {
 
 // Mise en place d'un message d'erreur si la rechche ne correspond à aucune recette
 export function noResult() {
+  document.querySelector('#contentRecipes').innerHTML = '';
   const error = document.createElement('div');
   error.setAttribute('id', 'errorMessage');
   error.setAttribute('class', 'w-100 mt-5');
