@@ -10,7 +10,7 @@ export function filterElements(content, elements) {
         elements[i].style.display = 'none';
       }
     } if (display === 0) {
-      console.log('no Result');
+      noResult();
     }
   } else {
     for (let i = 0; i < elements.length; i += 1) {
@@ -62,20 +62,3 @@ export function noResult() {
   `;
   document.querySelector('#contentRecipes').appendChild(error);
 }
-
-/* TEST BARRE DE RECHERCHE
-export function search2(recipes, searchString) {
-  console.log(searchString);
-  // const recipes = document.querySelectorAll('article');
-  console.log(recipes);
-  const newRec = recipes.forEach((recipe) => {
-    if (recipe.name.toLowerCase().includes(searchString)) {
-      console.log('recipe Ok', recipe);
-      return true;
-    }
-    console.log('recipe No', recipe);
-    return false;
-  });
-  return newRec;
-}
- */
