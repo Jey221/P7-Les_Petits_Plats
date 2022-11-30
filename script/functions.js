@@ -1,12 +1,16 @@
 // Mise en place d'une fonction de recherche sur la barre principale
 export function filterElements(content, elements) {
   if (content.length > 2) {
+    let display = 0;
     for (let i = 0; i < elements.length; i += 1) {
       if (elements[i].textContent.toLowerCase().includes(content)) {
         elements[i].style.display = 'block';
+        display += 1;
       } else {
         elements[i].style.display = 'none';
       }
+    } if (display === 0) {
+      console.log('no Result');
     }
   } else {
     for (let i = 0; i < elements.length; i += 1) {
