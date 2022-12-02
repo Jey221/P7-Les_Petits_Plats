@@ -65,7 +65,6 @@ function cardFactory(recipes) {
 export default function displayCardRecipes(recipes) {
   const content = document.querySelector('#contentRecipes');
   content.innerHTML = '';
-  console.log(recipes);
   recipes.forEach((recipes) => {
     const card = cardFactory(recipes);
     content.appendChild(card);

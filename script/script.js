@@ -26,7 +26,6 @@ const handler = {
     obj[prop] = value;
     switch (prop) {
       case 'filtredRecipes':
-        console.log('value', value);
         displayCardRecipes(value, proxy);
         displayTags(value, data.filters);
         tags(proxy);
