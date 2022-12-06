@@ -1,7 +1,7 @@
 // Mise en place d'une fonction de recherche sur la barre principale
 export function filterElements(content, elements) {
+  let display = 0;
   if (content.length > 2) {
-    let display = 0;
     for (let i = 0; i < elements.length; i += 1) {
       if (elements[i].textContent.toLowerCase().includes(content.toLowerCase())) {
         elements[i].style.display = 'block';
