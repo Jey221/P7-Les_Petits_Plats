@@ -23,7 +23,6 @@ function buildTagDom(event, data) {
       <i class="fa-regular fa-circle-xmark"></i>
     </div>`;
   // fermeture du tag
-  console.log(tag);
   tag.addEventListener('click', (event) => {
     event.preventDefault();
     const button = event.target.tagName === 'BUTTON' ? event.target : event.target.closest('button');
@@ -73,7 +72,6 @@ function filterRecipesByTags(recipes, filters) {
     }
     return false;
   });
-  console.log(recipes.length, ingredientsFiltred.length);
   const appFil = filters['appliance'];
   const applianceFiltred = ingredientsFiltred.filter((recipe) => {
     const appliances = recipe.appliance.toLowerCase();
@@ -90,6 +88,5 @@ function filterRecipesByTags(recipes, filters) {
     }
     return false;
   });
-  console.log(recipes.length, ingredientsFiltred.length, applianceFiltred.length, filtered.length);
   return filtered;
 }
