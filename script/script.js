@@ -1,6 +1,5 @@
 import recipes from './recipes.js';
 import displayCardRecipes from './card.js';
-// import { noResult } from './functions.js';
 import { filterElements } from './functions.js';
 import displayTags from './taglist.js';
 import tags from './tags.js';
@@ -54,6 +53,7 @@ proxy.filtredRecipes = [...recipes];
 document.querySelector('#searchRecipesInput').addEventListener('keyup', (e) => {
   const searchedValue = e.target.value;// variable qui est entrée ds la barre de recherche
   const cards = document.querySelectorAll('.article');// récupération des articles
+  proxy.searchLength = e.target.value.length;
   filterElements(searchedValue, cards);// fonction de recherche
 });
 

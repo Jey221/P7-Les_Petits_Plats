@@ -9,9 +9,8 @@ export function filterElements(content, elements) {
       } else {
         elements[i].style.display = 'none';
       }
-    } if (display === 0) {
-      noResult();
     }
+    displayError(display);
   } else {
     for (let i = 0; i < elements.length; i += 1) {
       elements[i].style.display = 'block';
@@ -53,13 +52,19 @@ export function searchByTags(recipes, filter, type) {
 }
 
 // Mise en place d'un message d'erreur si la rechche ne correspond à aucune recette
-export function noResult() {
-  document.querySelector('#contentRecipes').innerHTML = '';
-  const error = document.createElement('div');
-  error.setAttribute('id', 'errorMessage');
-  error.setAttribute('class', 'w-100 mt-5');
-  error.innerHTML = `
-    <p class="text-center h1"> Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc </p>
-  `;
-  document.querySelector('#contentRecipes').appendChild(error);
+function displayError(displayRecipeNumber) {
+  const errorElt = document.querySelector('#errorMessage');
+  if (displayRecipeNumber === 0) {
+    if (errorElt === null) {
+      const error = document.createElement('div');
+      error.setAttribute('id', 'errorMessage');
+      error.setAttribute('class', 'w-100 mt-5');
+      error.innerHTML = `
+        <p class="text-center h1"> Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc </p>
+      `;
+      document.querySelector('#contentRecipes').appendChild(error);
+    }
+  } else {
+    errorElt?.remove();
+  }
 }
